@@ -7,5 +7,7 @@ Currently the only supported operations are:
  * PrepareWatcher - A wrapper around ev_prepare, will be called before each blocking wait call
  * CheckWatcher - A wrapper around ev_check, will be called after each blocking wait call.
 
+Also, nested loops are not supported.  You can only create and operate on the default loop.
+
 This project is mainly meant to be used by the Manos project ( http://github.com/jacksonh/manos ) so likely will not be fully productized with documentation, tests, examples, ect, unless there is a need.
 
