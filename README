@@ -1,0 +1,11 @@
+
+libev-sharp is a wrapper around the libev ( http://software.schmorp.de/pkg/libev.html ) library.
+
+Currently the only supported operations are:
+ * IOWatcher - A wrapper around ev_io for watching IO operations
+ * TimerWatcher -  A wrapper around ev_timer for creating timers
+ * PrepareWatcher - A wrapper around ev_prepare, will be called before each blocking wait call
+ * CheckWatcher - A wrapper around ev_check, will be called after each blocking wait call.
+
+This project is mainly meant to be used by the Manos project ( http://github.com/jacksonh/manos ) so likely will not be fully productized with documentation, tests, examples, ect, unless there is a need.
+
