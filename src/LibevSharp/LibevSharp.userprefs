@@ -1,0 +1,21 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LibevSharpDemo/Main.cs" ctype="Workbench">
+    <Files>
+      <File FileName="Watcher.cs" Line="24" Column="3" />
+      <File FileName="Loop.cs" Line="38" Column="4" />
+      <File FileName="EventTypes.cs" Line="16" Column="21" />
+      <File FileName="LibevSharpDemo/Main.cs" Line="58" Column="52" />
+      <File FileName="AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="TimerWatcher.cs" Line="78" Column="1" />
+      <File FileName="UnmanagedWatcherCallback.cs" Line="4" Column="1" />
+      <File FileName="IOWatcher.cs" Line="74" Column="1" />
+      <File FileName="PrepareWatcher.cs" Line="1" Column="1" />
+      <File FileName="CheckWatcher.cs" Line="43" Column="61" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>
