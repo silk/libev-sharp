@@ -5,7 +5,6 @@ namespace LibevSharp
 	public class CheckWatcher : Watcher
 	{
 		private CheckWatcherCallback callback;
-		
 		private UnmanagedCheckWatcher unmanaged_watcher;
 		
 		public CheckWatcher (Loop loop, CheckWatcherCallback callback) : base (loop)
@@ -14,16 +13,18 @@ namespace LibevSharp
 			
 			unmanaged_watcher = new UnmanagedCheckWatcher ();
 			unmanaged_watcher.callback = CallbackFunctionPtr;
+
+			InitializeUnmanagedWatcher (unmanaged_watcher);
 		}
 	
-		public override void Start ()
+		protected override void StartImpl ()
 		{			
-			ev_check_start (Loop.Handle, ref unmanaged_watcher);
+			ev_check_start (Loop.Handle, WatcherPtr);
 		}
 		
-		public override void Stop ()
+		protected override void StopImpl ()
 		{			
-			ev_check_stop (Loop.Handle, ref unmanaged_watcher);	
+			ev_check_stop (Loop.Handle, WatcherPtr);	
 		}
 		
 		protected override void UnmanagedCallbackHandler (IntPtr _loop, IntPtr _watcher, int revents)
@@ -34,10 +35,10 @@ namespace LibevSharp
 		}
 		
 		[DllImport ("libev")]
-		private static extern void ev_check_start (IntPtr loop, ref UnmanagedCheckWatcher watcher);
+		private static extern void ev_check_start (IntPtr loop, IntPtr watcher);
 		
 		[DllImport ("libev")]
-		private static extern void ev_check_stop (IntPtr loop, ref UnmanagedCheckWatcher watcher);
+		private static extern void ev_check_stop (IntPtr loop, IntPtr watcher);
 	}
 	
 	public delegate void CheckWatcherCallback (Loop loop, CheckWatcher watcher, int revents);

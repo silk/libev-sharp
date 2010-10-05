@@ -5,7 +5,6 @@ namespace LibevSharp
 	public class TimerWatcher : Watcher
 	{
 		private TimerWatcherCallback callback;
-		
 		private UnmanagedTimerWatcher unmanaged_watcher;
 		
 		public TimerWatcher (TimeSpan repeat, Loop loop, TimerWatcherCallback callback) : this (TimeSpan.Zero, repeat, loop, callback)
@@ -22,9 +21,10 @@ namespace LibevSharp
 			unmanaged_watcher.after = after.TotalSeconds;
 			unmanaged_watcher.repeat = after.TotalSeconds;
 			
-			Console.WriteLine ("SIZE OF UNMANAGED TIMER:  '{0}'", Marshal.SizeOf (typeof (UnmanagedTimerWatcher)));
+			InitializeUnmanagedWatcher (unmanaged_watcher);
 		}
 		
+		/*
 		public TimeSpan Repeat {
 			get {
 				return TimeSpan.FromSeconds (unmanaged_watcher.repeat);	
@@ -33,15 +33,16 @@ namespace LibevSharp
 				unmanaged_watcher.repeat = value.TotalSeconds;	
 			}
 		}
+		*/
 		
-		public override void Start ()
+		protected override void StartImpl ()
 		{
-			ev_timer_start (Loop.Handle, ref unmanaged_watcher);
+			ev_timer_start (Loop.Handle, WatcherPtr);
 		}
 		
-		public override void Stop ()
+		protected override void StopImpl ()
 		{
-			ev_timer_stop (Loop.Handle, ref unmanaged_watcher);
+			ev_timer_stop (Loop.Handle, WatcherPtr);
 		}
 		
 		protected override void UnmanagedCallbackHandler (IntPtr loop, IntPtr watcher, int revents)
@@ -50,10 +51,10 @@ namespace LibevSharp
 		}
 		
 		[DllImport ("libev")]
-		private static extern void ev_timer_start (IntPtr loop, ref UnmanagedTimerWatcher watcher);
+		private static extern void ev_timer_start (IntPtr loop, IntPtr watcher);
 		
 		[DllImport ("libev")]
-		private static extern void ev_timer_stop (IntPtr loop, ref UnmanagedTimerWatcher watcher);
+		private static extern void ev_timer_stop (IntPtr loop, IntPtr watcher);
 	}
 	
 	public delegate void TimerWatcherCallback (Loop loop, TimerWatcher watcher, int revents);

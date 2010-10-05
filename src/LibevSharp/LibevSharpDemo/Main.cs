@@ -44,10 +44,6 @@ namespace LibevSharpDemo
 		private static void HandleTimer (Loop loop, TimerWatcher watcher, int revents)
 		{
 			Console.WriteLine ("handling the timer!");	
-			
-			watcher.Repeat += TimeSpan.FromSeconds (2);
-			
-			Console.WriteLine ("next timeout:  " + watcher.Repeat);
 		}
 			
 		private static void HandlePrepare (Loop loop, PrepareWatcher watcher, int revents)

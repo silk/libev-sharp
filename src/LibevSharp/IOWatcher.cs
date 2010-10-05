@@ -8,9 +8,9 @@ namespace LibevSharp
 	{
 		private IntPtr fd;
 		private IOWatcherCallback callback;
-		
+
 		private UnmanagedIOWatcher unmanaged_watcher;
-		
+
 		public IOWatcher (IntPtr fd, EventTypes types, Loop loop, IOWatcherCallback callback) : base (loop)
 		{
 			this.fd = fd;
@@ -22,34 +22,35 @@ namespace LibevSharp
 			unmanaged_watcher.events = types | EventTypes.EV__IOFDSET;
 
 			unmanaged_watcher.callback = CallbackFunctionPtr;
+
+			InitializeUnmanagedWatcher (unmanaged_watcher);
 		}
-		
+
 		public IntPtr FileHandle {
 			get { return fd; }
 		}
-		
-		public override void Start ()
-		{			
-			ev_io_start (Loop.Handle, ref unmanaged_watcher);
+
+		protected override void StartImpl ()
+		{
+			ev_io_start (Loop.Handle, WatcherPtr);
 		}
 		
-		public override void Stop ()
-		{			
-			ev_io_stop (Loop.Handle, ref unmanaged_watcher);	
+		protected override void StopImpl ()
+		{
+			ev_io_stop (Loop.Handle, WatcherPtr);	
 		}
 		
 		protected override void UnmanagedCallbackHandler (IntPtr _loop, IntPtr _watcher, int revents)
 		{
 			// Maybe I should verify the pointers?
-			
 			callback (Loop, this, revents);
 		}
 		
 		[DllImport ("libev")]
-		private static extern void ev_io_start (IntPtr loop, ref UnmanagedIOWatcher watcher);
+		private static extern void ev_io_start (IntPtr loop, IntPtr watcher);
 		
 		[DllImport ("libev")]
-		private static extern void ev_io_stop (IntPtr loop, ref UnmanagedIOWatcher watcher);
+		private static extern void ev_io_stop (IntPtr loop, IntPtr watcher);
 	}
 	
 	public delegate void IOWatcherCallback (Loop loop, IOWatcher watcher, int revents);

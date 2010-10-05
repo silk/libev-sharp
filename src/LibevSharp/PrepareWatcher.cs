@@ -2,10 +2,9 @@ using System;
 using System.Runtime.InteropServices;
 namespace LibevSharp
 {
-	public class PrepareWatcher : Watcher
+	public class PrepareWatcher : Watcher, IDisposable
 	{
 		private PrepareWatcherCallback callback;
-		
 		private UnmanagedPrepareWatcher unmanaged_watcher;
 		
 		public PrepareWatcher (Loop loop, PrepareWatcherCallback callback) : base (loop)
@@ -14,16 +13,19 @@ namespace LibevSharp
 			
 			unmanaged_watcher = new UnmanagedPrepareWatcher ();
 			unmanaged_watcher.callback = CallbackFunctionPtr;
+
+			InitializeUnmanagedWatcher (unmanaged_watcher);
 		}
-	
-		public override void Start ()
-		{			
-			ev_prepare_start (Loop.Handle, ref unmanaged_watcher);
+
+
+		protected override void StartImpl ()
+		{
+			ev_prepare_start (Loop.Handle, WatcherPtr);
 		}
 		
-		public override void Stop ()
+		protected override void StopImpl ()
 		{			
-			ev_prepare_stop (Loop.Handle, ref unmanaged_watcher);	
+			ev_prepare_stop (Loop.Handle, WatcherPtr);	
 		}
 		
 		protected override void UnmanagedCallbackHandler (IntPtr _loop, IntPtr _watcher, int revents)
@@ -34,10 +36,10 @@ namespace LibevSharp
 		}
 		
 		[DllImport ("libev")]
-		private static extern void ev_prepare_start (IntPtr loop, ref UnmanagedPrepareWatcher watcher);
+		private static extern void ev_prepare_start (IntPtr loop, IntPtr watcher);
 		
 		[DllImport ("libev")]
-		private static extern void ev_prepare_stop (IntPtr loop, ref UnmanagedPrepareWatcher watcher);
+		private static extern void ev_prepare_stop (IntPtr loop, IntPtr watcher);
 	}
 	
 	public delegate void PrepareWatcherCallback (Loop loop, PrepareWatcher watcher, int revents);
