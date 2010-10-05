@@ -30,7 +30,12 @@ namespace Libev {
 			get;
 			private set;
 		}
-		
+
+		public object UserData {
+		       get;
+		       set;
+		}		
+
 		internal IntPtr CallbackFunctionPtr {
 			get { return unmanaged_callback_ptr; }
 		}
