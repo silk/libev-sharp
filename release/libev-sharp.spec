@@ -11,6 +11,7 @@ Release:        1
 License:        MIT/X11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  mono-devel
+BuildRequires:  libev-devel
 Source0:        libev-sharp-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Summary:        A Managed wrapper around the libev event processing library
