@@ -27,7 +27,7 @@ Description: Managed wrapper for the libev library.
 Version: $(version)
 
 Requires: 
-Libs: -r:/usr/local/lib/libev-sharp/libev-sharp.dll
+Libs: -r:$(install_bin_dir)/libev-sharp.dll
 endef
 export LIBEV_SHARP_PC_SCRIPT
 
