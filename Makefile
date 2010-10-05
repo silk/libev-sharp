@@ -3,7 +3,7 @@ include config.make
 conf=Debug
 SLN=src/libev-sharp/libev-sharp.sln
 VERBOSITY=normal
-version=0.0.1
+version=0.0.2
 install_bin_dir = "$(prefix)/lib/libev-sharp/"
 install_pc_dir = "$(prefix)/lib/pkgconfig/"
 distdir = "libev-sharp-$(version)"
