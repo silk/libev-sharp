@@ -1,7 +1,7 @@
 $(if $(wildcard config.make),,$(error You need to run './configure' before running 'make'.))
 include config.make
 conf=Debug
-SLN=src/LibevSharp.sln
+SLN=src/LibevSharp/LibevSharp.sln
 VERBOSITY=normal
 version=0.0.1
 install_bin_dir = "$(prefix)/lib/libev-sharp/"
