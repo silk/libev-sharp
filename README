@@ -1,4 +1,3 @@
-
 libev-sharp is a wrapper around the libev ( http://software.schmorp.de/pkg/libev.html ) library.
 
 Currently the only supported operations are:
@@ -11,3 +10,5 @@ Also, nested loops are not supported.  You can only create and operate on the de
 
 This project is mainly meant to be used by the Manos project ( http://github.com/jacksonh/manos ) so likely will not be fully productized with documentation, tests, examples, ect, unless there is a need.
 
+TODO:
+ * Watchers will need to be gchandled so they don't disappear while waiting for events.
