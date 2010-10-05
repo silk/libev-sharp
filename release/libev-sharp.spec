@@ -10,30 +10,37 @@ Version:        0.0.1
 Release:        1
 License:        MIT/X11
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  mono-devel >= 2.6
-Source0:        %{name}-%{version}.tar.bz2
+BuildRequires:  mono-devel
+Source0:        libev-sharp-%{version}.tar.bz2
+Source1:        %{name}-rpmlintrc
 Summary:        A Managed wrapper around the libev event processing library
-Group:          Programming
+Group:          Development/Libraries/Other
 BuildArch:      noarch
 
 %description
-libev-sharp is a managed wrapper around the libev library.
+libev-sharp is a managed wrapper around the libev event processing library. This library allows you to watch for and respond to IO events and Timer events.
 
 %files
 %defattr(-, root, root)
 %{_prefix}/lib/%{name}
-%{_bindir}/%{name}
+%{_prefix}/share/pkgconfig/%{name}.pc
 
 %prep
 %setup -q -n %{name}-%{version}
 
 
 %build
-./configure --prefix=%{prefix}
+./configure
 make
 
 %install
-make install
+install -d %{buildroot}%{_prefix}/lib/%{name}
+for i in build/*.dll*; do  
+ install -c -m 644 $i %{buildroot}%{_prefix}/lib/%{name}/
+done
+install -d %{buildroot}%{_prefix}/share/pkgconfig/
+install -c -m 644 build/libev-sharp.pc %{buildroot}%{_prefix}/share/pkgconfig/%{name}.pc
+
 
 %clean
 rm -rf %{buildroot}

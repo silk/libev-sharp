@@ -35,6 +35,7 @@ export LIBEV_SHARP_PC_SCRIPT
 all: 
 	@test -f config.make || (echo "You need to run ./configure." && exit 1)
 	$(XBUILD) $(SLN) /property:Configuration=$(conf)
+	echo "$$LIBEV_SHARP_PC_SCRIPT" > build/libev-sharp.pc
 
 clean:
 	$(XBUILD) $(SLN) /property:Configuration=$(conf) /t:Clean
