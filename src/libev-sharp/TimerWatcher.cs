@@ -1,9 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
-namespace LibevSharp
-{
-	public class TimerWatcher : Watcher
-	{
+
+namespace Libev {
+
+	public class TimerWatcher : Watcher {
+
 		private TimerWatcherCallback callback;
 		private UnmanagedTimerWatcher unmanaged_watcher;
 		
@@ -72,7 +73,5 @@ namespace LibevSharp
 		public double after;
 		public double repeat;
 	}
-	
-	
 }
 

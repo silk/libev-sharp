@@ -1,9 +1,13 @@
+
+
 using System;
 using System.Runtime.InteropServices;
-namespace LibevSharp
-{
-	public class CheckWatcher : Watcher
-	{
+
+
+namespace Libev {
+
+	public class CheckWatcher : Watcher {
+
 		private CheckWatcherCallback callback;
 		private UnmanagedCheckWatcher unmanaged_watcher;
 		

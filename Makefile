@@ -1,7 +1,7 @@
 $(if $(wildcard config.make),,$(error You need to run './configure' before running 'make'.))
 include config.make
 conf=Debug
-SLN=src/LibevSharp/LibevSharp.sln
+SLN=src/libev-sharp/libev-sharp.sln
 VERBOSITY=normal
 version=0.0.1
 install_bin_dir = "$(prefix)/lib/libev-sharp/"
@@ -22,12 +22,12 @@ endif
 NUNIT_CONSOLE = nunit-console4
 
 define LIBEV_SHARP_PC_SCRIPT
-Name: Libev-Sharp
-Description: Wrapper for the libev library.
+Name: libev-sharp
+Description: Managed wrapper for the libev library.
 Version: $(version)
 
 Requires: 
-Libs: -r:/usr/local/lib/libev-sharp/LibEvSharp.dll
+Libs: -r:/usr/local/lib/libev-sharp/libev-sharp.dll
 endef
 export LIBEV_SHARP_PC_SCRIPT
 

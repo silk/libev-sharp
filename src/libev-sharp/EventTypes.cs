@@ -1,9 +1,12 @@
+
+
 using System;
-namespace LibevSharp
-{
+
+namespace Libev {
+
 	[Flags]
-	public enum EventTypes
-	{
+	public enum EventTypes {
+
 		Undefined   = -1,
 		None        = 0x00,
 		Read        = 0x01,

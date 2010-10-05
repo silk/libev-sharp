@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibevSharp", "LibevSharp.csproj", "{28EF3A80-B6E6-47ED-8DD1-1CA028DB2DE0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibevSharpDemo", "LibevSharpDemo\LibevSharpDemo.csproj", "{4122E0D1-7886-4995-A57B-64854CAA523F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libev-sharp", "libev-sharp.csproj", "{28EF3A80-B6E6-47ED-8DD1-1CA028DB2DE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,12 +13,8 @@ Global
 		{28EF3A80-B6E6-47ED-8DD1-1CA028DB2DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28EF3A80-B6E6-47ED-8DD1-1CA028DB2DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28EF3A80-B6E6-47ED-8DD1-1CA028DB2DE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4122E0D1-7886-4995-A57B-64854CAA523F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4122E0D1-7886-4995-A57B-64854CAA523F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4122E0D1-7886-4995-A57B-64854CAA523F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4122E0D1-7886-4995-A57B-64854CAA523F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = LibevSharp.csproj
+		StartupItem = libev-sharp.csproj
 	EndGlobalSection
 EndGlobal

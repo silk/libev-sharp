@@ -1,9 +1,13 @@
+
+
 using System;
 using System.Runtime.InteropServices;
-namespace LibevSharp
-{
-	public class PrepareWatcher : Watcher, IDisposable
-	{
+
+
+namespace Libev {
+
+	public class PrepareWatcher : Watcher, IDisposable {
+
 		private PrepareWatcherCallback callback;
 		private UnmanagedPrepareWatcher unmanaged_watcher;
 		

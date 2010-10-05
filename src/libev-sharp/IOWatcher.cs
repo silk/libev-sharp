@@ -1,11 +1,13 @@
+
+
 using System;
 using System.Runtime.InteropServices;
 
 
-namespace LibevSharp
-{
-	public class IOWatcher : Watcher
-	{
+namespace Libev {
+
+	public class IOWatcher : Watcher {
+
 		private IntPtr fd;
 		private IOWatcherCallback callback;
 

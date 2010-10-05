@@ -1,10 +1,12 @@
+
+
 using System;
 using System.Runtime.InteropServices;
 
-namespace LibevSharp
-{
-	public abstract class Watcher : IDisposable
-	{
+namespace Libev {
+
+	public abstract class Watcher : IDisposable {
+
 		private IntPtr watcher_ptr;
 		private IntPtr unmanaged_callback_ptr;
 		private UnmanagedWatcherCallback unmanaged_callback;

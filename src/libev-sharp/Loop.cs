@@ -1,9 +1,13 @@
+
+
 using System;
 using System.Runtime.InteropServices;
-namespace LibevSharp
-{
-	public class Loop : IDisposable
-	{
+
+
+namespace Libev {
+
+	public class Loop : IDisposable {
+
 		private IntPtr _native;
 		
 		internal Loop (IntPtr native)
